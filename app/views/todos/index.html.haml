@@ -1,0 +1,23 @@
+%h1 Listing todos
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Notes
+      %th
+      %th
+      %th
+
+  %tbody
+    - @todos.each do |todo|
+      %tr
+        %td= todo.title
+        %td= todo.notes
+        %td= link_to 'Show', todo , class:'btn btn-success' 'btn btn-primary btn-xs'
+        %td= link_to 'Edit', edit_todo_path(todo), class:'btn btn-success' 'btn btn-primary btn-xs'
+        %td= link_to 'Destroy', todo, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-xs'
+
+%br
+
+= link_to 'New Todo', new_todo_path, class:'btn btn-success'
